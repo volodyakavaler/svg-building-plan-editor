@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ox: 1.5
+  oy: 1.5
+  priority: 1
+  polygon_id: 
+
+two:
+  ox: 1.5
+  oy: 1.5
+  priority: 1
+  polygon_id: 

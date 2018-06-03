@@ -1,0 +1,10 @@
+=breadcrumb_tag do
+  %li.active
+    = link_to t('breadcrumb.campuses'), campuses_path
+  %li.active
+    = t('headers.campuses.new')
+
+.page-header
+  %h1= t('headers.campuses.new')
+
+= render 'form'

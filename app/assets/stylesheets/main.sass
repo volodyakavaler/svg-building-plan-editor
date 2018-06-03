@@ -1,0 +1,77 @@
+@include text-emphasis-variant('.text-purple', $brand-purple)
+
+a
+  color: black
+  text-decoration: none
+  &:hover
+    color: gray
+    text-decoration: none
+
+.msgemp
+  text-align: center
+  color: #8c8c8c
+
+.logo
+  text-align: center
+
+.growl-msg
+  display: none
+
+.alert-error
+  background-color: #f2dede
+  border-color: #eed3d7
+  color: #b94a48
+  text-align: center
+
+.alert-alert
+  background-color: #f2dede
+  border-color: #eed3d7
+  color: #b94a48
+  text-align: center
+
+.alert-success
+  background-color: #dff0d8
+  border-color: #d6e9c6
+  color: #468847
+  text-align: center
+
+.alert-notice
+  background-color: #dff0d8
+  border-color: #d6e9c6
+  color: #468847
+  text-align: center
+
+.breadcrumb
+  text-align: left
+  margin: 0px 0px 0px 0px
+  padding: 0px 0px 0px 0px
+  a
+    color: black
+    text-decoration: none
+
+.has-error .form-control:focus, .form-control:focus
+  box-shadow: none
+
+.field_with_errors
+  @extend .has-error
+
+@media print
+  a[href]:after
+    content: none
+  #wrapper
+    padding-left: 0
+    padding-top: 0
+    #sidebar-wrapper
+      width: 0
+    #page-content-wrapper
+      position: relative
+      margin-right: 0
+    #sidebar-toggle
+      left: 0
+$percents: (90 85 80 75 70 65 60 55 50 40 30 20 10 5)
+@each $percent in $percents
+  .small#{$percent}
+    font-size: #{$percent+'%'}
+    padding: #{round($padding-base-vertical * $percent / 100)} #{round($padding-base-horizontal * $percent / 100)} #{round($padding-base-vertical * $percent / 100)} #{round($padding-base-horizontal * $percent / 100)}
+.bottom20
+  padding-bottom: 20px

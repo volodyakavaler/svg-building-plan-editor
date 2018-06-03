@@ -1,0 +1,68 @@
+#editorEdit
+  -# Сайдбар редактора:
+  #editor_sidebar
+    -# Кнопки redo и undo:
+    %table{:border => "0", :cellpadding => "10", :width => "100%"}
+      %tr
+        %td
+          #undo.editor_sidebar-item
+            = inline_svg "editor/undo.svg", class: 'icon', size: "30"
+        %td
+          #redo.editor_sidebar-item
+            = inline_svg "editor/redo.svg", class: 'icon', size: "30"
+    %br
+
+    -# Кнопка курсора:
+    %table{:border => "0", :cellpadding => "10", :width => "100%"}
+      %tr
+        %td
+          #mouse-pointer.editor_sidebar-item
+            = inline_svg "editor/cursor.svg", class: 'icon', size: "30"
+    %br
+
+    -# Кнопки рисования полигонов:
+    %table{:border => "0", :cellpadding => "10", :width => "100%"}
+      %tr
+        %td
+          #polygon.editor_sidebar-item
+            = inline_svg "editor/select.svg", class: 'icon', size: "30"
+        %td
+          #subpolygon.editor_sidebar-item
+            = inline_svg "editor/sketch.svg", class: 'icon', size: "30"
+
+    -# Кнопки рисования лестниц и лифтов:
+    %table{:border => "0", :cellpadding => "10", :width => "100%"}
+      %tr
+        %td
+          #elevator.editor_sidebar-item
+            = inline_svg "editor/elevator.svg", class: 'icon', size: "30"
+        %td
+          #stairs.editor_sidebar-item
+            = inline_svg "editor/stairs.svg", size: "30"
+
+    -# Кнопка рисования дверей:
+    %table{:border => "0", :cellpadding => "10", :width => "100%"}
+      %tr
+        %td
+          #door.editor_sidebar-item
+            = inline_svg "editor/door.svg", class: 'icon', size: "30"
+    %br
+
+
+    -# Кнопка инфо:
+    %table{:border => "0", :cellpadding => "10", :width => "100%"}
+      %tr
+        %td
+          #info.editor_sidebar-item
+            = inline_svg "editor/question.svg", size: "30"
+    %br
+
+    -# Кнопка корзины:
+    %table{:border => "0", :cellpadding => "10", :width => "100%"}
+      %tr
+        %td
+          #clear-canvas.editor_sidebar-item
+            = inline_svg "editor/trash.svg", size: "30"
+
+  -# Канвас:
+  #editor_canvas

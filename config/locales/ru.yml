@@ -1,0 +1,147 @@
+ru:
+  app:
+    name: SVG-редактор планов помещений
+    company:
+      short_name: МИФИ
+  headers:
+    profile: Профиль пользователя %{user}
+    users:
+      new: Создание нового пользователя
+      index: Список пользователей
+      edit: Редактирование пользователя
+    campuses:
+      new: Создание нового кампуса
+      index: Список кампусов
+      edit: Редактирование кампуса «%{campus}»
+      index_with: Кампус «%{campus}»
+      index_with2: Корпуса кампуса «%{campus}»
+    buildings:
+      new: Создание нового корпуса
+      index: Список всех корпусов
+      edit: Редактирование корпуса «%{building}»
+      index_with: Корпус «%{building}»
+    floors:
+      new: Создание нового этажа
+      index_with: Этаж «%{floor}»
+      index_with2: Аудитории этажа «%{floor}»
+      index: Список всех этажей
+      edit: Редактирование этажа «%{floor}»
+    rooms:
+      search: Поиск аудиторий
+  breadcrumb:
+    profile: Профиль пользователя %{user}
+    users: Пользователи
+    campuses: Кампусы
+    buildings_with: Корпуса кампуса «%{campus}»
+    buildings: Корпуса всех кампусов
+    floors: Этажи
+  etc:
+    empty:
+      campus: Пока ни одного кампуса не создано...
+      building: Пока ни одного корпуса не создано...
+      floor: Пока ни одного этажа не создано...
+    case: Выберите кампус
+  flash:
+    user:
+      create: Пользователь успешно создан.
+      update: Пользователь успешно обновлён.
+      delete: Пользователь успешно удалён.
+      delete_yourself: Вы не можете удалить сами себя!
+    campus:
+      create: Кампус успешно создан.
+      update: Кампус успешно обновлён.
+      delete: Кампус успешно удалён.
+    building:
+      create: Корпус успешно создан.
+      update: Корпус успешно обновлён.
+      delete: Корпус успешно удалён.
+    floor:
+      create: Этаж успешно создан.
+      update: Этаж успешно обновлён.
+      delete: Этаж успешно удалён.
+    room:
+      create: Аудитория успешно создана.
+      update: Аудитория успешно обновлена.
+      delete: Аудитория успешно удалена.
+  sidebar:
+    users: Пользователи
+    profile: Профиль
+    plans: Планы
+    buildings: Корпуса
+    search: Поиск аудиторий
+    signin: Войти
+    signout: Выйти
+    roomtypes: Типы аудиторий
+  buttons:
+    edit: Редактировать
+    destroy: Удалить
+    show: Показать
+    back: Назад
+    confirm:
+      user: Действительно удалить пользователя?
+      campus: Действительно удалить кампус?
+      building: Действительно удалить корпус?
+      room: Действительно удалить аудиторию?
+    new:
+      user: Новый пользователь
+      campus: Новый кампус
+      building: Новый корпус
+      floor: Новый этаж
+    search:
+      room: Найти аудитории
+  views:
+    pagination:
+      first: ⇤
+      last: ⇥
+      previous: ←
+      next: →
+      truncate: …
+  forms:
+    room_search:
+      form:
+        room: По атрибутам помещения
+      from: от
+      to: до
+      found: Найдено
+form:
+  helpers:
+    submit:
+      create: Сохранить
+      submit: Сохранить
+      update: Сохранить
+  activerecord:
+    models:
+      user: Пользователь
+      campus: Кампус
+      building: Корпус
+      floor: Этаж
+      room: Аудитория
+    attributes:
+      user:
+        email: Электронная почта
+        last_name: Фамилия
+        first_name: Имя
+        patronymic: Отчество
+        password_confirmation: Подтверждение пароля
+        password: Пароль
+        created_at:	Дата созд.-я
+        updated_at: Дата посл. обн.-я
+      campus:
+        name: Название
+        description: Описание
+      building:
+        name: Название
+        description: Описание
+        campus_id: Кампус
+        campus: Кампус
+        address: Адрес
+      floor:
+        name: Этаж
+        description: Описание
+        building_id: Корпус
+      room:
+        id: Идентификатор
+        name: Аудитория
+        description: Описание
+        roomtype: Тип аудитории
+        roomtype_id: Тип аудитории

@@ -1,0 +1,21 @@
+%h1 Listing polygons
+
+%table
+  %thead
+    %tr
+      %th Imageable
+      %th
+      %th
+      %th
+
+  %tbody
+    - @polygons.each do |polygon|
+      %tr
+        %td= polygon.imageable
+        %td= link_to 'Show', polygon
+        %td= link_to 'Edit', edit_polygon_path(polygon)
+        %td= link_to 'Destroy', polygon, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Polygon', new_polygon_path

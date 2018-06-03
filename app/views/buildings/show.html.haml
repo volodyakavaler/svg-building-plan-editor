@@ -1,0 +1,58 @@
+=breadcrumb_tag do
+  %li
+    = link_to(t('breadcrumb.campuses'), campuses_url)
+  %li
+    = link_to(t('headers.campuses.index_with', campus: Campus.all.where(id: @building.campus_id)[0].name),
+    Campus.all.where(id: @building.campus_id)[0])
+  %li.active
+    = t('headers.buildings.index_with', building: @building.name)
+
+.page-header
+  %h1= t('headers.buildings.index_with', building: @building.name)
+  = @building.address
+
+%table.table.table-hover
+  .row
+    .col-md-6.text-left
+      = link_to Campus.all.where(id: @building.campus_id)[0], class: 'btn btn-default' do
+        = fa_icon 'arrow-left'
+        = t('buttons.back')
+    .col-md-6.text-right
+      = link_to new_floor_path(building: @building.id), class: 'btn btn-success' do
+        = fa_icon :plus
+        = t('buttons.new.floor')
+      = link_to edit_building_path(@building), class: 'btn btn-info' do
+        = fa_icon :edit
+        = t('buttons.edit')
+      = link_to @building, :method => :delete,
+      :data => { :confirm => t('buttons.confirm.building') },
+      class: 'btn btn-danger' do
+        = fa_icon :times
+        = t('buttons.destroy')
+
+- if @floors.empty?
+  .msgemp
+    %h3= t('etc.empty.floor')
+- else
+  .col-md-12
+    .card
+      %ul.list-group.list-group-flush
+        %li.list-group-item.text-center
+          %h4
+            = fa_icon :university
+        - @floors.sort_by{ |j| j[:name] }.each do |floor|
+          = link_to floor do
+            %li.list-group-item
+              .row
+                .col-md-12.text-center
+                  %h4
+                    = fa_icon 'check-circle'
+                    = t('headers.floors.index_with', floor: floor.name)
+                -# .col-md-2.text-right
+                -#   = link_to floor_path(id: floor.id) do
+                -#     = fa_icon :eye
+                -#   = link_to edit_floor_path(floor) do
+                -#     = fa_icon :edit
+                -#   = link_to floor, :method => :delete,
+                -#   :data => { :confirm => t('buttons.confirm.building') } do
+                -#     = fa_icon :times

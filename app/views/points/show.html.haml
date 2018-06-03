@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Ox:
+  = @point.ox
+%p
+  %b Oy:
+  = @point.oy
+%p
+  %b Priority:
+  = @point.priority
+%p
+  %b Polygon:
+  = @point.polygon
+
+= link_to 'Edit', edit_point_path(@point)
+\|
+= link_to 'Back', points_path

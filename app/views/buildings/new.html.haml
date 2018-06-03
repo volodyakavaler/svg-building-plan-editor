@@ -1,0 +1,18 @@
+-# %h1 New building
+-#
+-# = render 'form'
+-#
+-# = link_to 'Back', buildings_path
+-#
+-#
+
+=breadcrumb_tag do
+  %li.active
+    = link_to t('breadcrumb.campuses'), campuses_path
+  %li.active
+    = t('headers.building.new')
+
+.page-header
+  %h1= t('headers.building.new')
+
+= render 'form'

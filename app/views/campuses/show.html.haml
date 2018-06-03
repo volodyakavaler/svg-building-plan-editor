@@ -1,0 +1,72 @@
+=breadcrumb_tag do
+  %li
+    = t('breadcrumb.campuses')
+  %li.active
+    = @campus.name
+
+.page-header
+  %h1= t('headers.campuses.index_with', campus: @campus.name)
+  = @campus.description
+
+%table.table.table-hover
+  .row
+    .col-md-6.text-left
+      = link_to campuses_url, class: 'btn btn-default' do
+        = fa_icon 'arrow-left'
+        = t('buttons.back')
+    .col-md-6.text-right
+      = link_to new_building_path(building: @campus.id), class: 'btn btn-success' do
+        = fa_icon :plus
+        = t('buttons.new.building')
+      = link_to edit_campus_path(@campus), class: 'btn btn-info' do
+        = fa_icon :edit
+        = t('buttons.edit')
+      = link_to @campus, :method => :delete,
+      :data => { :confirm => t('buttons.confirm.campus') },
+      class: 'btn btn-danger' do
+        = fa_icon :times
+        = t('buttons.destroy')
+
+- if Building.all.where(campus_id: @campus).empty?
+  .msgemp
+    %h3= t('etc.empty.building')
+- else
+  .row
+    .col-md-6
+      = content_tag :div, id: "count", data: { count: @showPoints.size } do
+        #drawing
+      - for i in 0 ... @showPoints.size do
+        = content_tag :div, id: "editorData#{i}", data: { points: @showPoints[i] } do
+          = ""
+    .col-md-6
+      .page-header
+        %h3= t('headers.campuses.index_with2', campus: @campus.name)
+
+      %table.table.table-hover
+        -# %caption
+        -#   = link_to new_user_path, class: 'btn btn-success' do
+        -#     = fa_icon :plus
+        -#     = t('buttons.new.user')
+        %thead
+          %tr
+            %th= Campus.human_attribute_name(:name)
+            %th= Campus.human_attribute_name(:description)
+            %th
+            %th
+            %th
+        %tbody
+          - @buildings.each do |building|
+            %tr
+              %td.center= building.name
+              %td.center= building.description
+              %td.center
+                = link_to building_path(id: building.id) do
+                  = fa_icon :eye
+                  -# = t('buttons.show')
+              %td.center
+                = link_to edit_building_path(building) do
+                  = fa_icon :edit
+              %td.center
+                = link_to building, :method => :delete,
+                :data => { :confirm => t('buttons.confirm.building') } do
+                  = fa_icon :times

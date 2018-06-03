@@ -1,0 +1,35 @@
+
+.container
+  #shapeAttributeEdit.modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+          %h4.modal-title Редактирование данных объекта
+        .modal-body
+          .row
+            .col-md-6
+              .form-group
+                %label{:for => "name"} Имя
+                %input#name.form-control{:name => "name", :value => "", :type => "text"}/
+            .col-md-6
+              .form-group
+                %label{:for => "description"} Описание
+                %input#description.form-control{:name => "description", :type => "text"}/
+          .row
+            .col-md-3
+              .form-group
+                %label{:for => "capacity"} Вместимость
+                %input#capacity.form-control{:name => "capacity", :type => "number", :min => 0}/
+            .col-md-5
+              .form-group
+                %label{:for => "computers"} Наличие компьютеров
+                %input#computers.form-control{:name => "computers", :type => "number", :min => 0}/
+            .col-md-4
+              .form-group
+                %label{:for => "type"} Тип помещения
+                = select_tag 'type',
+                  options_for_select((Roomtype.all.map{|x| [x.name, x.id]}.sort)),
+                  {include_blank: false, class: 'form-control'}
+        .modal-footer
+          %button.btn.btn-primary#edit_submit{:type => "button"} OK

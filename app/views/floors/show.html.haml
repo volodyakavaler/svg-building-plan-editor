@@ -1,0 +1,71 @@
+=breadcrumb_tag do
+  %li
+    = link_to(t('breadcrumb.campuses'), campuses_url)
+  %li
+    = link_to(t('headers.campuses.index_with', campus: Campus.all.where(id: Building.all.where(id: @floor.building_id)[0].campus_id)[0].name),
+    Campus.all.where(id: Building.all.where(id: @floor.building_id)[0].campus_id)[0])
+  %li
+    = link_to(t('headers.buildings.index_with', building: Building.all.where(id: @floor.building_id)[0].name),
+    Building.all.where(id: @floor.building_id)[0])
+  %li.active
+    = t('headers.floors.index_with', floor: @floor.name)
+
+.page-header
+  %h1= t('headers.floors.index_with', floor: @floor.name)
+  = @floor.description
+
+%table.table.table-hover
+  .row
+    .col-md-6.text-left
+      = link_to Building.all.where(id: @floor.building_id)[0], class: 'btn btn-default' do
+        = fa_icon 'arrow-left'
+        = t('buttons.back')
+    .col-md-6.text-right
+      = link_to edit_floor_path(@floor), class: 'btn btn-info' do
+        = fa_icon :edit
+        = t('buttons.edit')
+      = link_to @floor, :method => :delete,
+      :data => { :confirm => t('buttons.confirm.campus') },
+      class: 'btn btn-danger' do
+        = fa_icon :times
+        = t('buttons.destroy')
+
+.row
+  .col-md-6
+    = content_tag :div, id: "count", data: { count: @showPointsOfRooms.size } do
+      #editorShow_canvas
+        #drawing
+    - for i in 0 ... @showPointsOfRooms.size do
+      = content_tag :div, id: "editorData#{i}", data: { points: @showPointsOfRooms[i] } do
+        = ""
+  .col-md-6
+    .page-header
+      %h3= t('headers.floors.index_with2', floor: @floor.name)
+
+    %table.table.table-hover
+      %thead
+        %tr
+          %th= Floor.human_attribute_name(:name)
+          %th= Floor.human_attribute_name(:description)
+          %th= Floor.human_attribute_name(:capacity)
+          %th= Floor.human_attribute_name(:computers)
+          %th= Floor.human_attribute_name(:roomtype_id)
+          %th
+          %th
+      %tbody
+        - i = 0
+        - @rooms.each do |room|
+          %tr{:id => i}
+            %td.center= room.name
+            %td.center= room.description
+            %td.center= room.capacity
+            %td.center= room.computers
+            %td.center= room.roomtype_id.nil? ? "" : (Roomtype.all.where(id: room.roomtype_id)[0].name)
+            %td.center
+              = link_to edit_room_path(room) do
+                = fa_icon :edit
+            %td.center
+              = link_to room, :method => :delete,
+              :data => { :confirm => t('buttons.confirm.room') } do
+                = fa_icon :times
+            - i += 1

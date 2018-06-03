@@ -1,0 +1,13 @@
+= form_for @polygon do |f|
+  - if @polygon.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@polygon.errors.count, "error")} prohibited this polygon from being saved:"
+      %ul
+        - @polygon.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :imageable
+    = f.text_field :imageable
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,39 @@
+= form_for @user do |f|
+  = error_messages_for @user
+  .row
+    .col-md-4
+      .form-group
+        = f.label :last_name
+        = f.text_field :last_name, class: 'form-control'
+        = f.error_messages_for(:last_name)
+    .col-md-4
+      .form-group
+        = f.label :first_name
+        = f.text_field :first_name, class: 'form-control'
+        = f.error_messages_for(:first_name)
+    .col-md-4
+      .form-group
+        = f.label :patronymic
+        = f.text_field :patronymic, class: 'form-control'
+        = f.error_messages_for(:patronymic)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :email
+        = f.text_field :email, class: 'form-control'
+        = f.error_messages_for(:email)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :password
+        = f.password_field :password, class: 'form-control'
+        = f.error_messages_for(:password)
+  -# .row
+  -#   .col-md-6
+  -#     .form-group
+  -#       = f.label :password_confirmation
+  -#       = f.password_field :password_confirmation, class: 'form-control'
+  -#       = f.error_messages_for(:password_confirmation)
+
+  .form-actions.bottom20
+    = f.submit nil, class: 'btn btn-primary'

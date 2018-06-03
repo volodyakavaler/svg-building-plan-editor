@@ -1,0 +1,27 @@
+%h1 Listing floors
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Building
+      %th Type
+      %th
+      %th
+      %th
+
+  %tbody
+    - @floors.each do |floor|
+      %tr
+        %td= floor.name
+        %td= floor.description
+        %td= floor.building
+        %td= Room.all.where(floor_id: floor.id).map{|q| q.roomtype_id}
+        %td= link_to 'Show', floor
+        %td= link_to 'Edit', edit_floor_path(floor)
+        %td= link_to 'Destroy', floor, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Floor', new_floor_path

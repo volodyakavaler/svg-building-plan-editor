@@ -1,0 +1,22 @@
+=breadcrumb_tag do
+  %li.active
+    = link_to t('breadcrumb.floors'), floors_path
+  %li.active
+    = t('headers.floors.edit', floor: @floor.name)
+
+.page-header
+  %h1= t('headers.floors.edit', floor: @floor.name)
+
+= render 'form'
+= render('editor/edit')
+
+- unless @rooms_for_draw.empty?
+  - for i in 0 ... @rooms_for_draw.size do
+    = content_tag :div, class: "submainPolygonData", data: {points:  @rooms_for_draw[i][:points],
+    name:        @rooms_for_draw[i][:name],
+    description: @rooms_for_draw[i][:description],
+    capacity:    @rooms_for_draw[i][:capacity],
+    computers:   @rooms_for_draw[i][:computers],
+    roomtype:    @rooms_for_draw[i][:roomtype],
+    id:          @rooms_for_draw[i][:id]} do
+      = ""

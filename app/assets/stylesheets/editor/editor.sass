@@ -1,0 +1,251 @@
+$editor_sidebar-width: 90px
+$editor_navbar-width: $editor_sidebar-width
+$editor-height: 500px
+$sidebar-bg: #37375A
+
+#success_message
+  display: none
+
+#editorNew
+  margin: 20px auto
+
+#editor_sidebar
+  float: left
+  height: $editor-height
+  width: $editor_sidebar-width
+  background:  url(editor/grid.png) #fff
+  border-right: 1px solid red
+
+.editor_sidebar-item
+  text-align: center
+  border: 0px
+  padding-top: 10px
+  padding-bottom: 5px
+  cursor: pointer
+  font-size: 14px
+  line-height: 18px
+  &.selected
+    // background-color: lighten($sidebar-bg, 12%)
+  &:hover
+    // background-color: lighten($sidebar-bg, 12%)
+    fill: red
+
+#editor_canvas
+  height: $editor-height
+  margin-left: $editor_sidebar-width
+  overflow: scroll
+  background:  url(editor/grid.png)
+  background-attachment: local
+
+// ------
+// $editor_sidebar-width: 61px
+// $editor_navbar-width: $editor_sidebar-width
+// $editor-height: 500px
+//
+// #editor
+//   margin: 20px auto
+//
+// #editor_navbar
+//   height: $editor_navbar-width
+//   width: 100%
+//   background:  url(editor/grid.png) #fff
+//   border-top: 1px solid black
+//   border-left: 1px solid black
+//   border-right: 1px solid black
+//   border-radius:  10px 10px 0 0
+//   margin: 0
+//
+// .editor_navbar-item-empty
+//   width: 60px
+//   display: inline-block
+//   float: left
+//   // text-align: center
+//   // border: 0px
+//   padding-top: 14.5px
+//   padding-bottom: 14.5px
+//   padding-left: 16px
+//   padding-right: 16px
+//   // font-size: 14px
+//   // line-height: 18px
+//   // border-left: 3px solid transparent
+//   // border-top: 3px solid transparent
+// .editor_navbar-item
+//   width: 60px
+//   display: inline-block
+//   float: left
+//   text-align: center
+//   border: 0px
+//   padding-top: 14.5px
+//   padding-bottom: 14.5px
+//   padding-left: 16px
+//   padding-right: 16px
+//   cursor: pointer
+//   font-size: 14px
+//   line-height: 18px
+//   border: 0.5px solid transparent
+//   &.selected
+//     border: 0.5px solid #E74C3C
+//     border-radius: 10px
+//     background-color: lighten(black, 12%)
+//     opacity: 0.7
+//     color: white
+//   &:hover
+//     border: 0.5px solid lighten(black, 12%)
+//     border-radius: 10px
+//     background-color: lighten(black, 12%)
+//     opacity: 0.7
+//     color: white
+//
+// #editor_sidebar
+//   float: left
+//   height: $editor-height
+//   width: $editor_sidebar-width
+//   background:  url(editor/grid.png) #fff
+//   border-left: 1px solid black
+//   border-bottom: 1px solid black
+//   border-radius:  0 0 0 10px
+//
+// .editor_sidebar-item
+//   height: 60px
+//   text-align: center
+//   border: 0px
+//   padding-top: 16px
+//   padding-bottom: 16px
+//   cursor: pointer
+//   font-size: 14px
+//   line-height: 18px
+//   border: 0.5px solid transparent
+//   &.selected
+//     border: 0.5px solid #E74C3C
+//     border-radius: 10px
+//     background-color: lighten(black, 12%)
+//     opacity: 0.7
+//     // fill: white
+//   &:hover
+//     border: 0.5px solid lighten(black, 12%)
+//     border-radius: 10px
+//     background-color: lighten(black, 12%)
+//     opacity: 0.7
+//     // fill: white
+//   &.footer
+//     margin-top: 100px
+//
+// #editor_canvas
+//   height: $editor-height
+//   margin-left: $editor_sidebar-width
+//   overflow: scroll
+//   background:  url(editor/grid.png)
+//   background-attachment: local
+//   border-right: 1px solid black
+//   border-bottom: 1px solid black
+//   border-radius:  0 0 10px 0
+*,
+*::before,
+*::after
+  box-sizing: border-box
+
+
+
+.container
+  margin: 0 auto
+  padding: 0 24px
+  max-width: 960px
+
+
+/* primary header */
+
+.primary-header
+  padding: 24px 0
+  text-align: center
+  border-bottom: solid 2px #cfcfcf
+
+
+.primary-header__title
+  color: #393939
+  font-size: 36px
+
+
+.primary-header__title small
+  font-size: 18px
+  color: #898989
+
+
+/* content */
+
+.content
+  padding: 48px 0
+  border-bottom: solid 2px #cfcfcf
+
+.content__footer
+  margin-top: 12px
+  text-align: center
+
+
+/* footer */
+
+.primary-footer
+  padding: 24px 0
+  color: #898989
+  font-size: 14px
+  text-align: center
+
+/* tasks */
+
+.tasks
+  list-style: none
+  margin: 0
+  padding: 0
+
+.task
+  display: flex
+  justify-content: space-between
+  padding: 12px 0
+  border-bottom: solid 1px #dfdfdf
+
+
+.task:last-child
+  border-bottom: none
+
+
+/* context menu */
+
+.context-menu
+  display: none
+  position: absolute
+  z-index: 10
+  padding: 12px 0
+  width: 240px
+  background-color: #fff
+  border: solid 1px #dfdfdf
+  box-shadow: 1px 1px 2px #cfcfcf
+
+
+.context-menu--active
+  display: block
+
+
+.context-menu__items
+  list-style: none
+  margin: 0
+  padding: 0
+
+
+.context-menu__item
+  display: block
+  margin-bottom: 4px
+
+
+.context-menu__item:last-child
+  margin-bottom: 0
+
+
+.context-menu__link
+  display: block
+  padding: 4px 12px
+  color: #0066aa
+  text-decoration: none
+
+
+.context-menu__link:hover
+  color: #fff
+  background-color: #0066aa

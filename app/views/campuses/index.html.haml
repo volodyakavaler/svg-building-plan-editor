@@ -1,0 +1,29 @@
+=breadcrumb_tag do
+  %li.active
+    = t('breadcrumb.campuses')
+
+.page-header
+  %h1= t('headers.campuses.index')
+
+%table.table.table-hover
+  .row
+    .col-md-12.text-right
+      = link_to new_campus_path, class: 'btn btn-success' do
+        = fa_icon :plus
+        = t('buttons.new.campus')
+
+- if @campuses.empty?
+  .msgemp
+    %h3= t('etc.empty.campus')
+- else
+  - @campuses.each do |campus|
+    .campuses{:value => campus.id}
+      = link_to campus do
+        .col-md-4
+          .panel.panel-default
+            .text-center
+              %h2
+                = fa_icon :university
+                %p
+                  %b
+                    = campus.name

@@ -1,0 +1,18 @@
+%h2= t('devise.forms.forgot_password')
+= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+  = devise_error_messages!
+  -# = error_messages_for @user
+  .row
+    .col-md-6
+      .form-group
+        = f.label :email
+        .input-group
+          = f.email_field :email, autofocus: true, class: 'form-control'
+          %span.input-group-btn
+            %button.btn.btn-primary{:type => "submit"}
+              =t('devise.forms.send')
+
+  .actions
+    -# = f.submit t('devise.forms.send_me_reset_password_instr'), class: 'btn btn-primary'
+
+= render "devise/shared/links"

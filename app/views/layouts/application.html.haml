@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title SvgBuildingPlanEditor
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    #wrapper
+      = render 'application/sidebar'
+      #page-content-wrapper
+        .container-fluid
+          =render 'flash_messages'
+          -if content_for? :breadcrumb
+            = yield :breadcrumb
+          -if content_for? :error_messages
+            = yield :error_messages
+          = yield

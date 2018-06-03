@@ -1,0 +1,11 @@
+=breadcrumb_tag do
+  %li
+    = link_to t('breadcrumb.floors'), floors_path
+  %li.active
+    = t('headers.floors.new')
+
+.page-header
+  %h1= t('headers.floors.new')
+
+= render 'form'
+= render('editor/new')

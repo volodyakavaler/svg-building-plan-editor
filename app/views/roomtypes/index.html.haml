@@ -1,0 +1,23 @@
+%h1 Listing roomtypes
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th
+      %th
+      %th
+
+  %tbody
+    - @roomtypes.each do |roomtype|
+      %tr
+        %td= roomtype.name
+        %td= roomtype.description
+        %td= link_to 'Show', roomtype
+        %td= link_to 'Edit', edit_roomtype_path(roomtype)
+        %td= link_to 'Destroy', roomtype, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Roomtype', new_roomtype_path

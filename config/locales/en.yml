@@ -1,0 +1,73 @@
+en:
+  app:
+    name: SVG plan editor
+    company:
+      short_name: MEPhI
+  headers:
+    users:
+      new: New user
+      index: List of users
+      edit: Editing user
+    campuses:
+      new: New campus
+      index: List of campuses
+      edit: Editing campus
+  breadcrumb:
+    users: Users
+    campuses: Campuses
+  flash:
+    user:
+      create: User was successfully created.
+      update: User was successfully updated.
+      delete: User was successfully destroyed.
+      delete_yourself: You can not destroy yourself!
+    campus:
+      create: Campus was successfully created.
+      update: Campus was successfully updated.
+      delete: Campus was successfully destroyed.
+  sidebar:
+    users: Users
+    profile: Profile
+    campus: Campus
+    signin: Sign In
+    signout: Sign Out
+  buttons:
+    edit: Edit
+    destroy: Delete
+    show: Show
+    confirm:
+      user: Are you sure?
+      campus: Are you sure?
+    new:
+      user: New user
+      campus: New campus
+  views:
+    pagination:
+      first: ⇤
+      last: ⇥
+      previous: ←
+      next: →
+      truncate: …
+  helpers:
+    submit:
+      create: Save
+      submit: Save
+      update: Save
+  activerecord:
+    models:
+      user: User
+      campus: Campus
+    attributes:
+      user:
+        email: E-mail
+        last_name: Last name
+        first_name: First name
+        patronymic: Patronymic
+        password_confirmation: Password confirmation
+        password: Password
+        created_at:	Created at
+        updated_at: Updated at
+      campus:
+        name: Name
+        address: Address
+        description: Description

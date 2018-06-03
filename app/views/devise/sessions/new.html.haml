@@ -1,0 +1,34 @@
+%h2= t('devise.forms.login')
+
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .row
+    .col-md-6
+      .form-group
+        .input-group.input-group-md
+          %span.input-group-addon.px50
+            %i.fa.fa-user
+          = f.email_field :email, autofocus: true,
+            class: 'form-control',
+            placeholder: User.human_attribute_name(:email)
+  .row
+    .col-md-6
+      .form-group
+        .input-group.input-group-md
+          %span.input-group-addon.px50
+            %i.fa.fa-key
+          = f.password_field :password, autocomplete: "off",
+            class: 'form-control',
+            placeholder: User.human_attribute_name(:password)
+  - if devise_mapping.rememberable?
+    .row
+      .col-md-6
+        .checkbox
+          %label
+            = f.check_box :remember_me
+            = t('devise.forms.remember_me')
+  .row
+    .form-actions
+      .col-md-6
+        = f.submit t('devise.forms.login'), class: 'btn btn-primary'
+
+        = render "devise/shared/links"

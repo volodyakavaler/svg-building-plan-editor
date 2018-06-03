@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Imageable:
+  = @polygon.imageable
+
+= link_to 'Edit', edit_polygon_path(@polygon)
+\|
+= link_to 'Back', polygons_path

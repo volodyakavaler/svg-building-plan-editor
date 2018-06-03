@@ -1,0 +1,67 @@
+=breadcrumb_tag do
+  %li.active
+    Поиск аудиторий
+
+.page-header
+  %h1= t('headers.rooms.search')
+
+= form_tag search_rooms_path(), method: :get do
+  %div{class: 'panel panel-info'}
+    .panel-heading
+      = t('forms.room_search.form.room')
+    .panel-body
+      .row
+        .col-md-4
+          .form-group
+            = Room.human_attribute_name(:name)
+            = text_field_tag 'search[room_name]',
+            params['search']['room_name'],
+            class: 'form-control'
+        .col-md-4
+          .form-group
+            = Room.human_attribute_name(:roomtype)
+            = select_tag 'search[room_roomtype]',
+            options_for_select((Roomtype.all.map{|x| [x.name, x.id]}.sort), @old_roomtype),
+            {include_blank: true, class: 'form-control'}
+        .col-md-4
+          .form-group
+            = Room.human_attribute_name(:capacity)
+            = text_field_tag 'search[room_capacity_from]',
+            params['search']['room_capacity_from'],
+            class: 'form-control', placeholder: t('forms.room_search.from')
+            = text_field_tag 'search[room_capacity_to]',
+            params['search']['room_capacity_to'],
+            class: 'form-control', placeholder: t('forms.room_search.to')
+  .actions
+    = submit_tag t('buttons.search.room'), class: 'btn btn-primary'
+
+.page-header
+  %h1= t('forms.room_search.found') + ": " + @rooms.size.to_s
+
+- if @rooms.size > 0
+  - @rooms.each do |room|
+    .alert.alert-info
+      .row
+        .col-md-1
+          %table.table.table-hover.table-striped
+            %thead
+              %tr
+                %th= Room.human_attribute_name(:id)
+              %tbody
+                %tr
+                  %td.center= link_to room.id, room
+        .col-md-3
+          %table.table.table-hover.table-striped
+            %thead
+              %tr
+                %th= Room.human_attribute_name(:name)
+              %tbody
+                %tr
+                  %td.center= room.name
+        .col-md-3
+          %table.table.table-hover.table-striped
+            %thead
+              %tr
+                %th= Room.human_attribute_name(:description)
+            %tbody
+              %td.center= room.description

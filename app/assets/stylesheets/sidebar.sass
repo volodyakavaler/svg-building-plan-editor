@@ -1,0 +1,59 @@
+$sidebar-width: 100px
+$sidebar-bg: #37375A
+
+#wrapper
+  padding-top: 0
+  padding-left: 0
+  transition: all 0.5s ease
+
+#sidebar-wrapper
+  z-index: 500
+  position: fixed
+  left: $sidebar-width
+  width: 0
+  height: 100%
+  margin-left: -$sidebar-width
+  overflow-y: auto
+  background-color: $sidebar-bg
+  transition: all 0.5s ease
+
+.sidebar-item
+  text-align: center
+  border: 0px
+  padding-top: 20px
+  padding-bottom: 15px
+  cursor: pointer
+  font-size: 14px
+  line-height: 18px
+  color: white
+  border-left: 3px solid $sidebar-bg
+  &.selected
+    border-left: 3px solid #E74C3C
+    background-color: lighten($sidebar-bg, 12%)
+  &:hover
+    background-color: lighten($sidebar-bg, 12%)
+    border-left: 3px solid lighten($sidebar-bg, 12%)
+  a
+    color: white
+    text-decoration: none
+  &.footer
+    line-height: normal
+    text-indent: 0px
+    padding-left: 10px
+    padding-right: 10px
+    margin-top: 50px
+    a, a:hover
+      display: inline
+
+@media (min-width: $screen-xs)
+  #wrapper
+    padding-left: $sidebar-width
+    &.toggled
+      padding-left: 0
+      #sidebar-wrapper
+        width: 0
+      #page-content-wrapper
+        position: relative
+        margin-right: 0
+  #sidebar-wrapper
+    width: $sidebar-width

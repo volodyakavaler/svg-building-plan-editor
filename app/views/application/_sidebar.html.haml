@@ -1,0 +1,36 @@
+%aside.hidden-print#sidebar-wrapper
+  .logo
+    =image_tag('logo.png')
+  - if user_signed_in?
+    - side_bar_items.each do |item|
+      - if is_open?(item[:controller])
+        = link_to(url_for(controller: item[:controller], action: item[:action])) do
+          .sidebar-item.selected
+            = fa_icon(item[:icon], class: 'fa-2x')
+            .br
+            = item[:name]
+      - else
+        = link_to(url_for(controller: item[:controller], action: item[:action])) do
+          .sidebar-item
+            = fa_icon(item[:icon], class: 'fa-2x')
+            .br
+            = item[:name]
+
+    = link_to(destroy_user_session_path, :method => :delete) do
+      .sidebar-item
+        = fa_icon('sign-out', class: 'fa-2x')
+        .br
+        = t('sidebar.signout')
+  - else
+    - if is_open?('sessions')
+      = link_to(new_user_session_path) do
+        .sidebar-item.selected
+          = fa_icon('sign-in', class: 'fa-2x')
+          .br
+          = t('sidebar.signin')
+    - else
+      = link_to(new_user_session_path) do
+        .sidebar-item
+          = fa_icon('sign-in', class: 'fa-2x')
+          .br
+          = t('sidebar.signin')

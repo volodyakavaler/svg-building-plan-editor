@@ -1,0 +1,26 @@
+= render('room_form')
+= form_for @floor do |f|
+  = error_messages_for @floor
+  .row
+    .col-md-5
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control'
+        = f.error_messages_for(:name)
+    .col-md-5
+      .form-group
+        = f.label :description
+        = f.text_field :description, class: 'form-control'
+        = f.error_messages_for(:description)
+    .col-md-2
+      .form-group
+        = f.label :building_id
+        = f.select :building_id, options_for_select(Building.all.map{|x|[x.name, x.id]}, f.object.building_id),
+        {include_blank: false},
+        {class: 'form-control'}
+        = f.error_messages_for(:building_id)
+
+  = f.hidden_field :editor_data
+  .row
+    .col-md-12
+      %button.btn.btn-primary#ok{:type => "button"} Сохранить
