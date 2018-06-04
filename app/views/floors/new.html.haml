@@ -1,11 +1,24 @@
 =breadcrumb_tag do
   %li
-    = link_to t('breadcrumb.floors'), floors_path
+    = link_to(t('breadcrumb.campuses'), campuses_url)
+  %li
+    = link_to(t('headers.campuses.index_with', campus: Campus.all.where(id: Building.all.where(id: @floor.building_id)[0].campus_id)[0].name),
+    Campus.all.where(id: Building.all.where(id: params[:building])[0].campus_id)[0])
+  %li
+    = link_to(t('headers.buildings.index_with', building: Building.all.where(id: params[:building])[0].name),
+    Building.all.where(id: params[:building])[0])
   %li.active
     = t('headers.floors.new')
 
 .page-header
   %h1= t('headers.floors.new')
+
+%table.table.table-hover
+  .row
+    .col-md-12.text-left
+      = link_to Building.all.where(id: params[:building])[0], class: 'btn btn-default' do
+        = fa_icon 'arrow-left'
+        = t('buttons.back')
 
 = render 'form'
 = render('editor/new')

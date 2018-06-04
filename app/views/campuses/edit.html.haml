@@ -5,7 +5,13 @@
     = t('headers.campuses.edit', campus: @campus.name)
 
 .page-header
-  -# %h1= t('headers.campuses.edit') + " «" + @campus.name + "»"
   %h1= t('headers.campuses.edit', campus: @campus.name)
+
+%table.table.table-hover
+  .row
+    .col-md-12.text-left
+      = link_to @campus, class: 'btn btn-default' do
+        = fa_icon 'arrow-left'
+        = t('buttons.back')
 
 = render 'form'

@@ -7,4 +7,11 @@
 .page-header
   %h1= t('headers.campuses.new')
 
+%table.table.table-hover
+  .row
+    .col-md-12.text-left
+      = link_to campuses_path, class: 'btn btn-default' do
+        = fa_icon 'arrow-left'
+        = t('buttons.back')
+
 = render 'form'

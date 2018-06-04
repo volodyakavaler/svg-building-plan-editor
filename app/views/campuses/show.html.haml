@@ -1,6 +1,6 @@
 =breadcrumb_tag do
   %li
-    = t('breadcrumb.campuses')
+    = link_to t('breadcrumb.campuses'), campuses_path
   %li.active
     = @campus.name
 
