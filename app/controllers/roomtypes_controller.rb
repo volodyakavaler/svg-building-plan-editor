@@ -1,15 +1,10 @@
 class RoomtypesController < ApplicationController
-  before_action :set_roomtype, only: [:show, :edit, :update, :destroy]
+  before_action :set_roomtype, only: [:edit, :update, :destroy]
 
   # GET /roomtypes
   # GET /roomtypes.json
   def index
     @roomtypes = Roomtype.all
-  end
-
-  # GET /roomtypes/1
-  # GET /roomtypes/1.json
-  def show
   end
 
   # GET /roomtypes/new
@@ -28,7 +23,7 @@ class RoomtypesController < ApplicationController
 
     respond_to do |format|
       if @roomtype.save
-        format.html { redirect_to @roomtype, notice: 'Roomtype was successfully created.' }
+        format.html { redirect_to roomtypes_url, notice: t('flash.roomtype.create') }
         format.json { render :show, status: :created, location: @roomtype }
       else
         format.html { render :new }
@@ -42,7 +37,7 @@ class RoomtypesController < ApplicationController
   def update
     respond_to do |format|
       if @roomtype.update(roomtype_params)
-        format.html { redirect_to @roomtype, notice: 'Roomtype was successfully updated.' }
+        format.html { redirect_to roomtypes_url, notice: t('flash.roomtype.update') }
         format.json { render :show, status: :ok, location: @roomtype }
       else
         format.html { render :edit }
@@ -56,14 +51,14 @@ class RoomtypesController < ApplicationController
   def destroy
     @roomtype.destroy
 
-    if @roomtype.errors
+    unless @roomtype.errors.messages.blank?
       respond_to do |format|
-        format.html { redirect_to roomtypes_url, notice: 'no...' }
+        format.html { redirect_to roomtypes_url, notice: t('flash.roomtype.deleteno') }
         format.json { head :no_content }
       end
     else
       respond_to do |format|
-        format.html { redirect_to roomtypes_url, notice: 'Roomtype was successfully destroyed.' }
+        format.html { redirect_to roomtypes_url, notice: t('flash.roomtype.delete') }
         format.json { head :no_content }
       end
     end

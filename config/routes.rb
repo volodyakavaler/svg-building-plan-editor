@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :roomtypes
+  resources :roomtypes, except: [:show]
   resources :rooms do
     collection do
       get :search

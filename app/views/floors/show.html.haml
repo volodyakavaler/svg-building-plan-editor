@@ -33,7 +33,7 @@
 .row
   .col-md-6
     = content_tag :div, id: "count", data: { count: @showPointsOfRooms.size } do
-      #editorShow_canvas
+      #editorShow
         #drawing
     - for i in 0 ... @showPointsOfRooms.size do
       = content_tag :div, id: "editorData#{i}", data: { points: @showPointsOfRooms[i] } do
