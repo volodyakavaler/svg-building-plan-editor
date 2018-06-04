@@ -13,23 +13,25 @@ class FloorsController < ApplicationController
     @rooms = Room.all.where(floor_id: @floor.id)
 
     # преобразование массива точек в строку для SVG.js (для полигонов этажей):
-    @showPointsOfFloor = []
-    polygons_ids = Polygon.all.where(imageable_id: @floor.id).map{ |i| i.id }
-    polygons_ids.each do |i|
-      @showPointsOfFloor << Point.all.where(polygon_id: i)
-                              .sort_by{ |j| j[:priority] }
-                              .map{ |j| "#{j.ox}, #{j.oy}" }
-                              .join(" ")
-    end
+    # @showPointsOfFloor = []
+    # polygons_ids = Polygon.all.where(imageable_id: @floor.id).map{ |i| i.id }
+    # polygons_ids.each do |i|
+    #   @showPointsOfFloor << Point.all.where(polygon_id: i)
+    #                           .sort_by{ |j| j[:priority] }
+    #                           .map{ |j| "#{j.ox}, #{j.oy}" }
+    #                           .join(" ")
+    # end
 
     # преобразование массива точек в строку для SVG.js (для полигонов аудиторий):
     @showPointsOfRooms = []
-    polygons_ids = Polygon.all.where(imageable_id: Room.all.where(floor_id: @floor.id)).map{ |i| i.id }
+    @showNamesOfRooms  = []
+    polygons_ids = Polygon.all.where(imageable_id: Room.all.where(floor_id: @floor.id))
     polygons_ids.each do |i|
-      @showPointsOfRooms << Point.all.where(polygon_id: i)
+      @showPointsOfRooms << Point.all.where(polygon_id: i.id )
                               .sort_by{ |j| j[:priority] }
                               .map{ |j| "#{j.ox}, #{j.oy}" }
                               .join(" ")
+      @showNamesOfRooms << Room.all.where(id: i.imageable_id)[0].name
     end
   end
 
