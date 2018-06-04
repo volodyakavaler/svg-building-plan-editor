@@ -116,7 +116,6 @@ ru:
       from: от
       to: до
       found: Найдено
-form:
   helpers:
     submit:
       create: Сохранить
@@ -158,3 +157,6 @@ form:
         description: Описание
         roomtype: Тип аудитории
         roomtype_id: Тип аудитории
+      roomtype:
+        name: Название
+        description: Описание
