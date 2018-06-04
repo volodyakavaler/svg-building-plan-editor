@@ -1,5 +1,6 @@
 class Room < ActiveRecord::Base
   belongs_to :floor
+  belongs_to :roomtype
   has_many :polygons, as: :imageable, dependent: :destroy
 
   # поиск

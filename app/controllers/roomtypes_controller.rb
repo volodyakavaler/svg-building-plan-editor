@@ -55,9 +55,17 @@ class RoomtypesController < ApplicationController
   # DELETE /roomtypes/1.json
   def destroy
     @roomtype.destroy
-    respond_to do |format|
-      format.html { redirect_to roomtypes_url, notice: 'Roomtype was successfully destroyed.' }
-      format.json { head :no_content }
+
+    if @roomtype.errors
+      respond_to do |format|
+        format.html { redirect_to roomtypes_url, notice: 'no...' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to roomtypes_url, notice: 'Roomtype was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 

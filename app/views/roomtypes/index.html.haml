@@ -1,23 +1,63 @@
-%h1 Listing roomtypes
+-# %h1 Listing roomtypes
+-#
+-# %table
+-#   %thead
+-#     %tr
+-#       %th Name
+-#       %th Description
+-#       %th
+-#       %th
+-#       %th
+-#
+-#   %tbody
+-#     - @roomtypes.each do |roomtype|
+-#       %tr
+-#         %td= roomtype.name
+-#         %td= roomtype.description
+-#         %td= link_to 'Show', roomtype
+-#         %td= link_to 'Edit', edit_roomtype_path(roomtype)
+-#         %td= link_to 'Destroy', roomtype, method: :delete, data: { confirm: 'Are you sure?' }
+-#
+-# %br
+-#
+-# = link_to 'New Roomtype', new_roomtype_path
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th
-      %th
-      %th
 
-  %tbody
-    - @roomtypes.each do |roomtype|
+=breadcrumb_tag do
+  %li.active
+    = t('breadcrumb.roomtypes')
+
+.page-header
+  %h1= t('headers.roomtypes.index')
+
+%table.table.table-hover
+  .row
+    .col-md-12.text-right
+      = link_to new_roomtype_path, class: 'btn btn-success' do
+        = fa_icon :plus
+        = t('buttons.new.roomtype')
+
+- if @roomtypes.empty?
+  .msgemp
+    %h3= t('etc.empty.roomtype')
+- else
+  %table.table.table-hover
+    %thead
       %tr
-        %td= roomtype.name
-        %td= roomtype.description
-        %td= link_to 'Show', roomtype
-        %td= link_to 'Edit', edit_roomtype_path(roomtype)
-        %td= link_to 'Destroy', roomtype, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Roomtype', new_roomtype_path
+        %th= Roomtype.human_attribute_name(:name)
+        %th= Roomtype.human_attribute_name(:description)
+        %th
+    %tbody
+      - @roomtypes.each do |roomtype|
+        %tr
+          %td.center= roomtype.name
+          %td.center= roomtype.description
+          %td.text-right
+            = link_to edit_roomtype_path(roomtype), class: 'btn btn-info' do
+              = fa_icon :edit
+              = t('buttons.edit')
+            = link_to roomtype, :method => :delete,
+            :data => { :confirm => t('buttons.confirm.roomtype') },
+            class: 'btn btn-danger' do
+              = fa_icon :times
+              = t('buttons.destroy')
